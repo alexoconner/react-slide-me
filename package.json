@@ -4,7 +4,17 @@
   "description": "image/item carousel with react js",
   "main": "lib/",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf ./lib",
+    "prebuild": "npm run clean",
+    "build": "npm run build:scripts && npm run build:html",
+    "build:scripts": "babel ./src --out-dir ./lib",
+    "build:html": "cp ./src/*.html ./lib",
+    "watch": "babel --watch ./src --out-dir ./lib",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "live-server ./lib"
+  },
+  "browserify": {
+    "transform": "babelify"
   },
   "repository": {
     "type": "git",
@@ -23,5 +33,12 @@
   "bugs": {
     "url": "https://github.com/alexoconner/react-slide-me/issues"
   },
-  "homepage": "https://github.com/alexoconner/react-slide-me#readme"
+  "homepage": "https://github.com/alexoconner/react-slide-me#readme",
+  "devDependencies": {
+    "babel-cli": "^6.6.4",
+    "babel-preset-urban": "^0.4.0",
+    "babelify": "^7.2.0",
+    "browserify": "^13.0.0",
+    "live-server": "^0.9.2"
+  }
 }
