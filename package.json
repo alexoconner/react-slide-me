@@ -1,0 +1,27 @@
+{
+  "name": "react-slide-me",
+  "version": "0.0.0",
+  "description": "image/item carousel with react js",
+  "main": "lib/",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexoconner/react-slide-me.git"
+  },
+  "keywords": [
+    "react",
+    "reactjs",
+    "carousel",
+    "gallery",
+    "slider",
+    "slide"
+  ],
+  "author": "Alexander Skrabl",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexoconner/react-slide-me/issues"
+  },
+  "homepage": "https://github.com/alexoconner/react-slide-me#readme"
+}
