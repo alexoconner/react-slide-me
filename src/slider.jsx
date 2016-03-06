@@ -24,10 +24,10 @@ class Slider extends React.Component {
 
         switch ( animation ) {
             case 'fade':
-                this.slideFadeNext();
+                this.slideFadePrevious();
                 break;
             default:
-                this.slideFadeNext();
+                this.slideFadePrevious();
         }
     };
 
@@ -38,6 +38,9 @@ class Slider extends React.Component {
             case 'fade':
                 this.slideFadeNext();
                 break;
+            case 'move':
+                this.slideMoveNext();
+                break;
             default:
                 this.slideFadeNext();
         }
@@ -46,7 +49,7 @@ class Slider extends React.Component {
     slideFadePrevious() {
 
         let currItem = this.getCurrentItem();
-        let prevItem = this.getNextItem();
+        let prevItem = this.getPreviousItem();
 
         // place previous slide above current slide
         prevItem.style.zIndex = parseInt( currItem.style.zIndex ) + 1;
@@ -71,6 +74,24 @@ class Slider extends React.Component {
         // fade out current slide while fading in next slide just by using css animations
         currItem.style.opacity = 0;
         nextItem.style.opacity = 1;
+
+        // change active slide
+        nextItem.classList.add('active');
+        currItem.classList.remove('active');
+    }
+
+    slideMoveNext() {
+
+        let currItem = this.getCurrentItem();
+        let nextItem = this.getNextItem();
+
+        // place next slide next to current slide
+        nextItem.style.left = this.getSliderWidth() + 'px';
+        console.log(nextItem.style.left);
+
+        // fade out current slide while fading in next slide just by using css animations
+        currItem.style.left = '-' + this.getSliderWidth() + 'px';
+        nextItem.style.left = 0;
 
         // change active slide
         nextItem.classList.add('active');
@@ -125,25 +146,34 @@ class Slider extends React.Component {
         }
     }
 
+    /**
+     * get slider width
+     * @return {number}
+     */
+    getSliderWidth() {
+        return this.slider.clientWidth;
+    }
+
     componentDidMount() {
         const { animation } = this.props;
 
         this.slider = this.refs['slide-me-container'];
         this.sliderItems = this.slider.querySelectorAll('.slider-item');
 
-        console.log(this.sliderItems);
         for ( let i = 0; i < this.sliderItems.length; i++ ) {
             let item = this.sliderItems[i];
-            switch ( animation ) {
-                case 'fade':
-                    if ( item.classList.contains('active') ) {
+
+            if ( item.classList.contains('active') ) {
+                switch ( animation ) {
+                    case 'fade':
                         item.style.opacity = 1;
-                    }
-                    break;
-                default:
-                    if ( item.classList.contains('active') ) {
+                        break;
+                    case 'move':
+                        item.style.left = 0;
+                        break;
+                    default:
                         item.style.opacity = 1;
-                    }
+                }
             }
         }
     }
@@ -161,7 +191,8 @@ class Slider extends React.Component {
                 position: 'relative',
                 display: 'inline-block',
                 width: size.width,
-                height: size.height
+                height: size.height,
+                overflow: 'hidden'
             },
             containerItem: {
                 position: 'absolute',
@@ -191,6 +222,9 @@ class Slider extends React.Component {
         switch ( animation ) {
             case 'fade':
                 styles.containerItem.opacity = 0;
+                break;
+            case 'move':
+                styles.containerItem.left = size.width;
                 break;
             default:
                 styles.containerItem.opacity = 0;

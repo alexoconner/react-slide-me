@@ -20,4 +20,5 @@ var size = {
     height: 320
 }
 
-ReactDOM.render( <Slider items={ items } type="image" size={ size } animation="fade" speed={ 1000 } />, document.getElementById('Slider') );
+ReactDOM.render( <Slider items={ items } type="image" size={ size } animation="fade" speed={ 1000 } />, document.getElementById('SliderFade') );
+ReactDOM.render( <Slider items={ items } type="image" size={ size } animation="move" speed={ 1000 } />, document.getElementById('SliderMove') );
