@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "rm -rf ./lib",
     "prebuild": "npm run clean && mkdir ./lib",
-    "build": "npm run build:scripts && npm run build:html",
+    "assets": "mkdir ./lib/sample-images && cp ./src/sample-images/* ./lib/sample-images/",
+    "build": "npm run build:scripts && npm run build:html && npm run assets",
     "build:scripts": "browserify ./src/index.js -o ./lib/index.js -t babelify --debug",
     "build:html": "cp ./src/*.html ./lib",
     "watch": "watchify ./src/index.js -o ./lib/index.js -t babelify --debug",

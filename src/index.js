@@ -4,18 +4,19 @@ import ReactDOM from 'react-dom';
 import Slider from './slider.jsx';
 
 var items = [
-    'http://lorempixel.com/420/320/city/',
-    'http://placehold.it/420x320/',
+    'sample-images/01.jpg',
+    'sample-images/02.jpg',
     {
-        url: 'http://lorempixel.com/420/320/city/',
-        alt: 'alt tag',
-        title: 'image title'
+        url: 'sample-images/03.jpg',
+        alt: 'New York Skyline',
+        title: 'Photo of New York skyline taken in Brooklyn'
     },
-    'http://placehold.it/420x320/'
+    'sample-images/04.jpg',
+    'sample-images/05.jpg'
 ];
 
 var size = {
-    width: 420,
+    width: 480,
     height: 320
 }
 

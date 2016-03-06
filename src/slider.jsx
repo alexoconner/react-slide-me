@@ -119,7 +119,6 @@ class Slider extends React.Component {
                 if ( i === this.sliderItems.length - 1 ) {
                     return this.sliderItems[0];
                 }
-                console.log(this.sliderItems[i + 1]);
                 return this.sliderItems[i + 1];
             }
         }
