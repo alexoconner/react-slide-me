@@ -15,6 +15,7 @@ class Slider extends React.Component {
     constructor ( props ) {
         super( props );
 
+        this.slider = null;
         this.sliderItems = [];
     }
 
@@ -126,8 +127,11 @@ class Slider extends React.Component {
 
     componentDidMount() {
         const { animation } = this.props;
-        this.sliderItems = document.querySelectorAll('.slider-item');
 
+        this.slider = this.refs['slide-me-container'];
+        this.sliderItems = this.slider.querySelectorAll('.slider-item');
+
+        console.log(this.sliderItems);
         for ( let i = 0; i < this.sliderItems.length; i++ ) {
             let item = this.sliderItems[i];
             switch ( animation ) {
@@ -137,6 +141,9 @@ class Slider extends React.Component {
                     }
                     break;
                 default:
+                    if ( item.classList.contains('active') ) {
+                        item.style.opacity = 1;
+                    }
             }
         }
     }
@@ -216,7 +223,7 @@ class Slider extends React.Component {
         }
 
         return (
-            <div ref="slide-me-container" style={ styles.container }>
+            <div ref="slide-me-container" className={ this.uniqueSliderID } style={ styles.container }>
                 <button style={ styles.btnPrevious } onClick={ this.btnPrevious }>previous</button>
                 <button style={ styles.btnNext } onClick={ this.btnNext }>next</button>
                 { mapedItems }
@@ -226,5 +233,3 @@ class Slider extends React.Component {
 }
 
 export default Slider;
-
-window.Slider = Slider;
