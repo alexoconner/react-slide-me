@@ -14,6 +14,8 @@ class Slider extends React.Component {
 
     constructor ( props ) {
         super( props );
+
+        this.sliderItems = [];
     }
 
     btnPrevious = () => {
@@ -22,6 +24,9 @@ class Slider extends React.Component {
 
     btnNext = () => {
         console.log('handle next');
+        console.log(this.getPreviousItem());
+        console.log(this.getCurrentItem());
+        console.log(this.getNextItem());
     };
 
     previousSlide() {
@@ -32,12 +37,64 @@ class Slider extends React.Component {
 
     }
 
+    /**
+     * get current slider item
+     * @return {object}
+     */
+    getCurrentItem() {
+        for ( let i = 0; i < this.sliderItems.length; i++ ) {
+            let item = this.sliderItems[i];
+
+            if ( item.classList.contains('active') ) {
+                return item;
+            }
+        }
+    }
+
+    /**
+     * get previous slider item
+     * @return {object}
+     */
+    getPreviousItem() {
+        for ( let i = 0; i < this.sliderItems.length; i++ ) {
+            let item = this.sliderItems[i];
+
+            if ( item.classList.contains('active') ) {
+                if ( i === 0 ) {
+                    return this.sliderItems[this.sliderItems.length-1];
+                }
+                return this.sliderItems[i - 1];
+            }
+        }
+    }
+
+    /**
+     * get next slider item
+     * @return {object}
+     */
+    getNextItem() {
+        for ( let i = 0; i < this.sliderItems.length; i++ ) {
+            let item = this.sliderItems[i];
+
+            if ( item.classList.contains('active') ) {
+                if ( i === this.sliderItems.length - 1 ) {
+                    return this.sliderItems[0];
+                }
+                return this.sliderItems[i + 1];
+            }
+        }
+    }
+
+    slideFade() {
+
+    }
+
     componentDidMount() {
         const { animation } = this.props;
-        const sliderItems = document.querySelectorAll('.slider-item');
+        this.sliderItems = document.querySelectorAll('.slider-item');
 
-        for ( let i = 0; i < sliderItems.length; i++ ) {
-            let item = sliderItems[i];
+        for ( let i = 0; i < this.sliderItems.length; i++ ) {
+            let item = this.sliderItems[i];
             switch ( animation ) {
                 case 'fade':
                     if ( item.classList.contains('active') ) {
@@ -134,3 +191,5 @@ class Slider extends React.Component {
 }
 
 export default Slider;
+
+window.Slider = Slider;
