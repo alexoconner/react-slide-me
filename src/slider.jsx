@@ -9,7 +9,14 @@ class Slider extends React.Component {
         type: React.PropTypes.string,
         size: React.PropTypes.object,
         animation: React.PropTypes.string,
-        speed: React.PropTypes.number
+        speed: React.PropTypes.number,
+        easing: React.PropTypes.string
+    };
+
+    static defaultProps = {
+        animation: 'fade',
+        speed: 1000,
+        easing: 'linear'
     };
 
     constructor ( props ) {
@@ -93,7 +100,7 @@ class Slider extends React.Component {
         prevItem.style.left = '-' + this.getSliderWidth() + 'px';
 
         window.setTimeout( () => {
-            prevItem.style.transition = 'all ' + speed + 'ms';
+            prevItem.style.transition = this.getSliderTransition();
             currItem.style.left = this.getSliderWidth() + 'px';
             prevItem.style.left = 0;
 
@@ -113,7 +120,7 @@ class Slider extends React.Component {
         nextItem.style.left = this.getSliderWidth() + 'px';
 
         window.setTimeout( () => {
-            nextItem.style.transition = 'all ' + speed + 'ms';
+            nextItem.style.transition = this.getSliderTransition();
             currItem.style.left = '-' + this.getSliderWidth() + 'px';
             nextItem.style.left = 0;
 
@@ -171,6 +178,15 @@ class Slider extends React.Component {
     }
 
     /**
+     * get slider transition
+     * @return {string}
+     */
+    getSliderTransition() {
+        const { speed, easing } = this.props;
+        return 'all ' + speed + 'ms ' + easing;
+    }
+
+    /**
      * get slider width
      * @return {number}
      */
@@ -225,7 +241,7 @@ class Slider extends React.Component {
                 width: size.width,
                 height: size.height,
                 zIndex: 100,
-                transition: 'all ' + speed + 'ms',
+                transition: this.getSliderTransition(),
             },
             btnPrevious: {
                 position: 'absolute',
