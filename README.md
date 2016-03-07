@@ -7,7 +7,7 @@ React component written in ES6 for creating slideshows/carousels with images or 
 ## Installation
 * clone repository
 * `npm install`    
-* `npm run build` then open the ./lib directory in your browswer or run `npm start` to start live-server.
+* `npm run build` then open the ./lib directory in your browser or run `npm start` to start live-server.
 
 ## Usage
 See comments below:
@@ -40,7 +40,7 @@ var size = {
  * items: object
  * type: string
  * size: object {width, height}
- * animation: string (fade, move)
+ * animation: string (fade, moveHorizontal)
  * speed: number
  * easing: string (css3 easing)
  */

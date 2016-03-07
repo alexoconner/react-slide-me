@@ -33,8 +33,8 @@ class Slider extends React.Component {
             case 'fade':
                 this.slideFadePrevious();
                 break;
-            case 'move':
-                this.slideMovePrevious();
+            case 'moveHorizontal':
+                this.slideMoveHorizontalPrevious();
                 break;
             default:
                 this.slideFadePrevious();
@@ -48,14 +48,17 @@ class Slider extends React.Component {
             case 'fade':
                 this.slideFadeNext();
                 break;
-            case 'move':
-                this.slideMoveNext();
+            case 'moveHorizontal':
+                this.slideMoveHorizontalNext();
                 break;
             default:
                 this.slideFadeNext();
         }
     };
 
+    /**
+     * fade slide previous
+     */
     slideFadePrevious() {
 
         let currItem = this.getCurrentItem();
@@ -73,6 +76,9 @@ class Slider extends React.Component {
         currItem.classList.remove('active');
     }
 
+    /**
+     * slide fade next
+     */
     slideFadeNext() {
 
         let currItem = this.getCurrentItem();
@@ -90,7 +96,10 @@ class Slider extends React.Component {
         currItem.classList.remove('active');
     }
 
-    slideMovePrevious() {
+    /**
+     * slide move horizontal previous
+     */
+    slideMoveHorizontalPrevious() {
         const { speed } = this.props;
 
         let currItem = this.getCurrentItem();
@@ -109,7 +118,10 @@ class Slider extends React.Component {
         }, 10);
     }
 
-    slideMoveNext() {
+    /**
+     * slide move horizontal next
+     */
+    slideMoveHorizontalNext() {
         const { speed } = this.props;
 
         let currItem = this.getCurrentItem();
@@ -208,7 +220,7 @@ class Slider extends React.Component {
                     case 'fade':
                         item.style.opacity = 1;
                         break;
-                    case 'move':
+                    case 'moveHorizontal':
                         item.style.left = 0;
                         break;
                     default:
@@ -263,7 +275,7 @@ class Slider extends React.Component {
             case 'fade':
                 styles.containerItem.opacity = 0;
                 break;
-            case 'move':
+            case 'moveHorizontal':
                 styles.containerItem.left = size.width;
                 break;
             default:
