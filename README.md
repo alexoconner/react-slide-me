@@ -2,12 +2,12 @@
 
 React component written in ES6 for creating slideshows/carousels with images or (later) html using CSS3 animations.
 
-`Note` This is still waaay under development. However, feel free to try it out though!
+`Note` This is still waaay under development. However, feel free to try it out!
 
- ## Installation
- * clone repository
- * `npm install`
- * `npm run build` then open the ./lib directory in your browswer or run `npm start` to start live-server.
+## Installation
+* clone repository
+* `npm install`    
+* `npm run build` then open the ./lib directory in your browswer or run `npm start` to start live-server.
 
 ## Usage
 See comments below:
@@ -36,6 +36,14 @@ var size = {
 }
 
 // render slider, currently you can only use "image" as type and fade as animation type.
+/**
+ * items: object
+ * type: string
+ * size: object {width, height}
+ * animation: string (fade, move)
+ * speed: number
+ * easing: string (css3 easing)
+ */
 ReactDOM.render(
     <Slider
         items={ items }
@@ -43,6 +51,7 @@ ReactDOM.render(
         size={ size }
         animation="fade"
         speed={ 1000 }
+        easing="ease"
     />,
     document.getElementById('Slider')
 );
