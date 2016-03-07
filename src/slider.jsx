@@ -26,6 +26,9 @@ class Slider extends React.Component {
             case 'fade':
                 this.slideFadePrevious();
                 break;
+            case 'move':
+                this.slideMovePrevious();
+                break;
             default:
                 this.slideFadePrevious();
         }
@@ -80,22 +83,43 @@ class Slider extends React.Component {
         currItem.classList.remove('active');
     }
 
+    slideMovePrevious() {
+        const { speed } = this.props;
+
+        let currItem = this.getCurrentItem();
+        let prevItem = this.getPreviousItem();
+
+        prevItem.style.transition = 'none';
+        prevItem.style.left = '-' + this.getSliderWidth() + 'px';
+
+        window.setTimeout( () => {
+            prevItem.style.transition = 'all ' + speed + 'ms';
+            currItem.style.left = this.getSliderWidth() + 'px';
+            prevItem.style.left = 0;
+
+            prevItem.classList.add('active');
+            currItem.classList.remove('active');
+        }, 10);
+    }
+
     slideMoveNext() {
+        const { speed } = this.props;
 
         let currItem = this.getCurrentItem();
         let nextItem = this.getNextItem();
 
         // place next slide next to current slide
+        nextItem.style.transition = 'none';
         nextItem.style.left = this.getSliderWidth() + 'px';
-        console.log(nextItem.style.left);
 
-        // fade out current slide while fading in next slide just by using css animations
-        currItem.style.left = '-' + this.getSliderWidth() + 'px';
-        nextItem.style.left = 0;
+        window.setTimeout( () => {
+            nextItem.style.transition = 'all ' + speed + 'ms';
+            currItem.style.left = '-' + this.getSliderWidth() + 'px';
+            nextItem.style.left = 0;
 
-        // change active slide
-        nextItem.classList.add('active');
-        currItem.classList.remove('active');
+            nextItem.classList.add('active');
+            currItem.classList.remove('active');
+        }, 10);
     }
 
     /**
