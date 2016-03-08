@@ -36,6 +36,9 @@ class Slider extends React.Component {
             case 'moveHorizontal':
                 this.slideMoveHorizontalPrevious();
                 break;
+            case 'moveVertical':
+                this.slideMoveVerticalPrevious();
+                break;
             default:
                 this.slideFadePrevious();
         }
@@ -50,6 +53,9 @@ class Slider extends React.Component {
                 break;
             case 'moveHorizontal':
                 this.slideMoveHorizontalNext();
+                break;
+            case 'moveVertical':
+                this.slideMoveVerticalNext();
                 break;
             default:
                 this.slideFadeNext();
@@ -142,6 +148,51 @@ class Slider extends React.Component {
     }
 
     /**
+     * slide move vertical previous
+     */
+    slideMoveVerticalPrevious() {
+        const { speed } = this.props;
+
+        let currItem = this.getCurrentItem();
+        let prevItem = this.getPreviousItem();
+
+        prevItem.style.transition = 'none';
+        prevItem.style.top = '-' + this.getSliderHeight() + 'px';
+
+        window.setTimeout( () => {
+            prevItem.style.transition = this.getSliderTransition();
+            currItem.style.top = this.getSliderHeight() + 'px';
+            prevItem.style.top = 0;
+
+            prevItem.classList.add('active');
+            currItem.classList.remove('active');
+        }, 10);
+    }
+
+    /**
+     * slide move vertical next
+     */
+    slideMoveVerticalNext() {
+        const { speed } = this.props;
+
+        let currItem = this.getCurrentItem();
+        let nextItem = this.getNextItem();
+
+        // place next slide next to current slide
+        nextItem.style.transition = 'none';
+        nextItem.style.top = this.getSliderHeight() + 'px';
+
+        window.setTimeout( () => {
+            nextItem.style.transition = this.getSliderTransition();
+            currItem.style.top = '-' + this.getSliderHeight() + 'px';
+            nextItem.style.top = 0;
+
+            nextItem.classList.add('active');
+            currItem.classList.remove('active');
+        }, 10);
+    }
+
+    /**
      * get current slider item
      * @return {object}
      */
@@ -206,6 +257,14 @@ class Slider extends React.Component {
         return this.slider.clientWidth;
     }
 
+    /**
+     * get slider height
+     * @return {number}
+     */
+    getSliderHeight() {
+        return this.slider.clientHeight;
+    }
+
     componentDidMount() {
         const { animation } = this.props;
 
@@ -222,6 +281,9 @@ class Slider extends React.Component {
                         break;
                     case 'moveHorizontal':
                         item.style.left = 0;
+                        break;
+                    case 'moveVertical':
+                        item.style.top = 0;
                         break;
                     default:
                         item.style.opacity = 1;
@@ -277,6 +339,9 @@ class Slider extends React.Component {
                 break;
             case 'moveHorizontal':
                 styles.containerItem.left = size.width;
+                break;
+            case 'moveVertical':
+                styles.containerItem.top = size.height;
                 break;
             default:
                 styles.containerItem.opacity = 0;
