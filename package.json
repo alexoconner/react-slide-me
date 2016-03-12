@@ -4,15 +4,14 @@
   "description": "image/item carousel with react js",
   "main": "lib/",
   "scripts": {
-    "clean": "rm -rf ./lib",
-    "prebuild": "npm run clean && mkdir ./lib",
-    "assets": "mkdir ./lib/sample-images && cp ./src/sample-images/* ./lib/sample-images/",
-    "build": "npm run build:scripts && npm run build:html && npm run assets",
-    "build:scripts": "browserify ./src/index.js -o ./lib/index.js -t babelify --debug",
-    "build:html": "cp ./src/*.html ./lib",
+    "clean": "rm -rf ./lib ./dist",
+    "prebuild": "npm run clean && mkdir ./lib && mkdir ./dist",
+    "build": "npm run build:scripts && npm run build:example:scripts",
+    "build:scripts": "babel ./src/ --out-dir ./lib/",
+    "build:example:scripts": "browserify ./example/example.js -o ./dist/example.js -t babelify --debug",
     "watch": "watchify ./src/index.js -o ./lib/index.js -t babelify --debug",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server ./lib"
+    "start": "live-server ./"
   },
   "browserify": {
     "transform": "babelify"

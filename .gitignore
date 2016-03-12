@@ -8,3 +8,4 @@
 # node and build
 node_modules/
 lib/
+dist/
