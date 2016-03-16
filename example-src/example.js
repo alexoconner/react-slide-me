@@ -1,7 +1,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Slider from '../src/index.js';
+import Slider from '../lib/index.js';
 
 var items = [
     'sample-images/01.jpg',

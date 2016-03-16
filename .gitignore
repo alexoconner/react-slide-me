@@ -1,6 +1,7 @@
 # logs
 *.log
 *.log.*
+.DS_Store
 
 # editors
 .idea/
@@ -9,3 +10,4 @@
 node_modules/
 lib/
 dist/
+example/
