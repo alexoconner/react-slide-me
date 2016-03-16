@@ -6,10 +6,11 @@
   "scripts": {
     "clean": "rm -rf ./lib ./example",
     "prebuild": "npm run clean && mkdir ./lib && mkdir ./example",
+    "watch": "npm run watch:scripts && npm run watch:example:scripts",
     "build": "npm run build:scripts && npm run build:example:scripts && npm run copy:example:html && npm run assets",
     "build:scripts": "babel ./src/ --out-dir ./lib/",
     "build:example:scripts": "browserify ./example-src/example.js -o ./example/example.js -t babelify --debug",
-    "watch:scripts": "watchify ./src/index.js -o ./lib/index.js -t babelify --debug",
+    "watch:scripts": "babel ./src/ --out-dir ./lib/ --watch --source-maps",
     "watch:example:scripts": "watchify ./example-src/example.js -o ./example/example.js -t babelify --debug",
     "copy:example:html": "cp ./example-src/index.html ./example/index.html",
     "assets": "mkdir ./example/sample-images && cp ./example-src/sample-images/* ./example/sample-images/",
