@@ -4,17 +4,23 @@
   "description": "image/item carousel with react js",
   "main": "lib/",
   "scripts": {
-    "clean": "rm -rf ./lib ./example",
+    "clean": "rm -rf ./lib ./example ./dist",
     "prebuild": "npm run clean && mkdir ./lib && mkdir ./example",
+    "prebuild:dev": "npm run clean && mkdir ./dist",
+    "watch": "npm run watch:dev:scripts",
     "build": "npm run build:scripts && npm run build:example:scripts && npm run copy:example:html && npm run assets",
+    "build:dev": "npm run build:html:dev && npm run build:dev:scripts && npm run assets:dev",
     "build:scripts": "babel ./src/ --out-dir ./lib/",
+    "build:dev:scripts": "browserify ./src/test.js -o ./dist/test.js -t babelify --debug",
     "build:example:scripts": "browserify ./example-src/example.js -o ./example/example.js -t babelify --debug",
-    "watch:scripts": "watchify ./src/index.js -o ./lib/index.js -t babelify --debug",
+    "watch:dev:scripts": "watchify ./src/test.js -o ./dist/test.js -t babelify --debug",
     "watch:example:scripts": "watchify ./example-src/example.js -o ./example/example.js -t babelify --debug",
     "copy:example:html": "cp ./example-src/index.html ./example/index.html",
+    "build:html:dev": "cp ./src/index.html ./dist/index.html",
     "assets": "mkdir ./example/sample-images && cp ./example-src/sample-images/* ./example/sample-images/",
+    "assets:dev": "mkdir ./dist/sample-images && cp ./src/sample-images/* ./dist/sample-images",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server ./"
+    "start": "live-server ./dist"
   },
   "browserify": {
     "transform": "babelify"

@@ -1,4 +1,4 @@
 
-import Slider from './slider';
+import Slider from './slider.jsx';
 
 module.exports = Slider;
