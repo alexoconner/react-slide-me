@@ -19,4 +19,31 @@ var size = {
     height: 320
 }
 
-ReactDOM.render( <Slider items={ items } type="image" size={ size } animation="fade" speed={ 1000 } easing="ease" />, document.getElementById('SliderFade') );
+console.log('loaded');
+
+ReactDOM.render( <Slider
+    items={ items }
+    type="image"
+    size={ size }
+    animation="fade"
+    speed={ 1000 }
+    easing="ease"
+/>, document.getElementById('SliderFade') );
+
+ReactDOM.render( <Slider
+    items={ items }
+    type="image"
+    size={ size }
+    animation="moveHorizontal"
+    speed={ 1000 }
+    easing="ease"
+/>, document.getElementById('SliderMove') );
+
+ReactDOM.render( <Slider
+    items={ items }
+    type="image"
+    size={ size }
+    animation="moveVertical"
+    speed={ 1000 }
+    easing="ease"
+/>, document.getElementById('SliderMoveVertical') );
