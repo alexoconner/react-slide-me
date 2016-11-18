@@ -9,4 +9,5 @@
 # node and build
 node_modules/
 dist/
+lib/
 example/
