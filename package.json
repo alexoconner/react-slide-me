@@ -2,19 +2,19 @@
   "name": "react-slide-me",
   "version": "0.0.0",
   "description": "image/item carousel with react js",
-  "main": "lib/",
+  "main": "src/slider.jsx",
   "scripts": {
-    "clean": "rm -rf ./lib",
-    "prebuild": "npm run clean && mkdir ./lib",
+    "clean": "rm -rf ./dist",
+    "prebuild": "npm run clean && mkdir ./dist",
     "watch": "npm run watch:scripts",
     "build": "npm run build:html && npm run build:dev:scripts && npm run assets",
-    "build:dev:scripts": "browserify ./src/example.js -o ./lib/index.js -t babelify --debug",
-    "build:lib:scripts": "browserify ./src/slider.jsx -o ./lib/slider.js -t babelify",
-    "build:scripts": "browserify ./src/index.js -o ./lib/index.js -t babelify --debug",
-    "build:html": "cp ./src/*.html ./lib",
-    "assets": "mkdir ./lib/sample-images && cp ./src/sample-images/* ./lib/sample-images/",
+    "build:dev:scripts": "browserify ./src/example.js -o ./dist/index.js -t babelify --debug",
+    "build:lib:scripts": "rm -rf ./lib && mkdir ./lib && browserify ./src/slider.jsx -o ./lib/slider.js -t babelify",
+    "build:scripts": "browserify ./src/index.js -o ./dist/index.js -t babelify --debug",
+    "build:html": "cp ./src/*.html ./dist",
+    "assets": "mkdir ./dist/sample-images && cp ./src/sample-images/* ./dist/sample-images/",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "live-server ./lib"
+    "start": "live-server ./dist"
   },
   "browserify": {
     "transform": "babelify"
