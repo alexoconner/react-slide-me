@@ -1,6 +1,6 @@
 {
   "name": "react-slide-me",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "image/item carousel with react js",
   "main": "lib/index.js",
   "jsxnet:main": "lib/slider-es6.jsx",
@@ -11,7 +11,7 @@
     "build": "npm run build:html && npm run build:dev:scripts && npm run assets",
     "build:dev:scripts": "browserify ./src/example.js -o ./dist/index.js -t babelify --debug",
     "precompile": "rm -rf ./lib && mkdir ./lib",
-    "compile": "babel ./src/slider.jsx --out-file ./lib/index.js && cp ./src/slider.jsx ./lib/slider-es6.jsx",
+    "compile": "babel ./src/slider.jsx --out-file ./lib/index.js && cp ./src/slider.jsx ./lib/slider.es6.jsx",
     "build:scripts": "browserify ./src/index.js -o ./dist/index.js -t babelify --debug",
     "build:html": "cp ./src/*.html ./dist",
     "assets": "mkdir ./dist/sample-images && cp ./src/sample-images/* ./dist/sample-images/",
