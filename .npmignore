@@ -6,9 +6,8 @@
 # editors
 .idea/
 
-# node and build
-node_modules/
+.gitignore
 dist/
-lib/
-example/
+src/
+.babelrc
 *.tgz
