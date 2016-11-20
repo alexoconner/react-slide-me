@@ -1,6 +1,6 @@
 {
   "name": "react-slide-me",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "image/item carousel with react js",
   "main": "lib/index.js",
   "jsxnet:main": "lib/slider-es6.jsx",

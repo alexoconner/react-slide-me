@@ -2,10 +2,13 @@
 
 React component written in ES6 for creating slideshows/carousels with images or (later) html using CSS3 animations.
 
-## Installation
+## Installation from npm
+* `npm i -D react-slide-me`
+
+## Development
 * clone repository
-* `npm install`    
-* `npm run build` then open the ./lib directory in your browser or run `npm start` to start live-server.
+* `npm i`    
+* `npm run build` then run `npm start` to start live-server.
 
 ## Usage
 See comments below:
