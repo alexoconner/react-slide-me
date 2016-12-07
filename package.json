@@ -8,6 +8,7 @@
     "clean": "rm -rf ./dist",
     "prebuild": "npm run clean && mkdir ./dist",
     "watch": "npm run watch:scripts",
+    "watch:scripts": "watchify ./src/example.js -o ./dist/index.js -t -v babelify --debug",
     "build": "npm run build:html && npm run build:dev:scripts && npm run assets",
     "build:dev:scripts": "browserify ./src/example.js -o ./dist/index.js -t babelify --debug",
     "precompile": "rm -rf ./lib && mkdir ./lib",
