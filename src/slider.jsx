@@ -364,6 +364,13 @@ class Slider extends React.Component {
                     )
                 }
                 else if ( typeof item === 'object' ) {
+                    if ( typeof item.href !== undefined ) {
+                        return (
+                            <a key={ index } href={ item.href } ref="slider-item" style={ styles.containerItem } className={ itemClass }>
+                                <img src={ item.url } alt={ item.alt } />
+                            </a>
+                        )
+                    }
                     return (
                         <div key={ index } ref="slider-item" style={ styles.containerItem } className={ itemClass }>
                             <img src={ item.url } alt={ item.alt } />

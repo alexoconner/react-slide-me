@@ -8,7 +8,8 @@ var items = [
     {
         url: 'sample-images/03.jpg',
         alt: 'New York Skyline',
-        title: 'Photo of New York skyline taken in Brooklyn'
+        title: 'Photo of New York skyline taken in Brooklyn',
+        href: 'http://www.google.com'
     },
     'sample-images/04.jpg',
     'sample-images/05.jpg'
@@ -18,8 +19,6 @@ var size = {
     width: 480,
     height: 320
 }
-
-console.log('loaded');
 
 ReactDOM.render( <Slider
     items={ items }
